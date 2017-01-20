@@ -5,7 +5,7 @@ MODULE #3:
 
 1.	SELECT * FROM Person.Person;
 	(Pulls all columns from 20,000 database!)
-	
+
 2.	 SELECT LastName, FirstName FROM Person.Person;
 	(Pulls just the LastName and FirstName columns)
 
@@ -30,4 +30,11 @@ MODULE #3:
 	FROM Person.Person;
 	(concatenates FirstName and  LastName into a new column aliased as “FullName”)
 
-7.	
+7.	USE AdventureWorks2016CTP3
+	GO
+
+	SELECT FirstName, LastName, FirstName + ' ' + LastName 
+	FROM Person.Person;
+	(without aliasing, you get a "no column header" on your new column)
+
+8. 
