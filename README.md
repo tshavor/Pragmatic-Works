@@ -11,7 +11,7 @@ MODULE #3:
 
 
 3.	SELECT TOP (10) LastName, FirstName
- 	FROM Person.Person;
+ 	FROM Person.Person; //(Person schema, Person table)//
 	(Selects 10 rows from query (in any order))
 
 4.	SELECT TOP (10) LastName AS Last, FirstName First
@@ -23,18 +23,42 @@ MODULE #3:
 	ORDER BY FirstName, LastName;
 	(orders first name and last name)
 
-6.	USE AdventureWorks2016CTP3
+Module #4:
+
+1.	USE AdventureWorks2016CTP3
 	GO
 
 	SELECT FirstName, LastName, FirstName + ' ' + LastName AS FullName
 	FROM Person.Person;
 	(concatenates FirstName and  LastName into a new column aliased as “FullName”)
 
-7.	USE AdventureWorks2016CTP3
+2.	USE AdventureWorks2016CTP3
 	GO
 
 	SELECT FirstName, LastName, FirstName + ' ' + LastName 
 	FROM Person.Person;
-	(without aliasing, you get a "no column header" on your new column)
+	(without aliasing, you get a "no column header" on your new column- VERY BAD PRACTICE, so always alias your column names!)
 
-8. 
+3. 	SELECT UnitPrice,
+	UnitPrice + 10 AS TenDollarsAdded
+	FROM Sales.SalesOrderDetail
+	(selects UnitPrice column, then adds 10 to it, & creates an aliased column called "TenDollarsAdded"; only works because both column are numeric!)
+
+4. 	SELECT UnitPrice,
+	UnitPrice + 10 AS TenDollarsAdded,  
+	UnitPrice/2 AS HalfOff
+	FROM Sales.SalesOrderDetail
+
+5. 	SELECT UnitPrice,
+	UnitPrice + 10 AS TenDollarsAdded,
+	UnitPrice/2 AS HalfOff,
+	UnitPrice + UnitPrice AS DoubleMarkup
+	FROM Sales.SalesOrderDetail
+
+6. 	SELECT UnitPrice,
+	(UnitPrice - 10) /2 *7 AS ComplexExpression
+		
+	FROM Sales.SalesOrderDetail
+	(allows for complex orders of operations, as long as columns are numeric)
+
+7.	
