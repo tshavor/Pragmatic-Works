@@ -61,4 +61,43 @@ Module #4:
 	FROM Sales.SalesOrderDetail
 	(allows for complex orders of operations, as long as columns are numeric)
 
-7.	
+7.	SELECT 10 % 2
+	(use of Modulo gives remainder after division operation= 0)
+
+8.	SELECT 5 % 2 AS Oddvalue
+	(modulo is typically used in programming to determine if a value is ODD or EVEN)
+
+9.	SELECT 5 % 2 AS OddValue
+		, 30 % 10 AS EvenValue
+
+10.	SELECT 10/3
+	(SQL assumes all numbers are integers unless you specify otherwise.  Answer = 3)
+
+11. SELECT 10.0/3
+	(SQL converts numbers to decimals based on changing the 10 to 10.0.  Answer = 3.333)
+
+12. SELECT LEFT(FirstName, 1)
+	FROM Person.Person;
+	(takes first char on the LEFT side from "FirstName")
+
+13. SELECT LEFT(FirstName, 1) AS FirstInitial
+	, FirstName
+	, LEFT(LastName, 1) AS LastInitial
+	, LastName
+	FROM Person.Person;
+	(Displays 4 columns, with first and last initials followed by the full names)
+
+
+14. SELECT FirstName
+	, LEFT (FirstName, 3) AS LeftThree
+	, LastName
+	, RIGHT (LastName, 3) AS RightThree
+	FROM Person.Person;
+	(gives first 3 characters of FirstName, last 3 of LastName)
+
+15. SELECT UPPER(FirstName) AS FirstName
+	, LOWER(LastName) AS LastName
+	FROM Person.Person;
+	(Converts FirstName to upper case, Lastname to lower case)
+
+16. 
