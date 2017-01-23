@@ -1,4 +1,4 @@
-MODULEu #4:
+MODULE #4:
 
 1.	USE AdventureWorks2016CTP3
 	GO
