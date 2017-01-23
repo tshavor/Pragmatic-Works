@@ -1,1 +1,0 @@
-SELECT SalesOrderID, SalesOrderDetailID, ProductID FROM Sales.SalesOrderDetail;
