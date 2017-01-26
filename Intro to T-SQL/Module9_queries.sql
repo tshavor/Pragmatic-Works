@@ -20,3 +20,15 @@ MODULE 9: TABLE JOINS
 	--(not sure why I need to join on both SpecialOfferID and ProductID, but it decreases the volume by half.  Does 
 		--this make it a 1:1 relationship?)
 
+4. SELECT C.CustomerID, C.AccountNumber, SOH.SalesOrderID, SOH.OrderDate, P.Name AS ProductName, P.Color AS ProductColor, SOD.OrderQty
+	FROM Sales.Customer AS C
+	INNER JOIN Sales.SalesOrderHeader AS SOH
+	ON C.CustomerID = SOH.CustomerID 
+	INNER JOIN Sales.SalesOrderDetail as SOD
+		ON SOH.SalesOrderID= SOD.SalesOrderID
+			INNER JOIN Production.Product as P
+				ON SOD.ProductID= P.ProductID;
+				--(linking 4 tables together!)
+
+
+
