@@ -34,3 +34,49 @@ SELECT P.ProductID, P.Name, SOD.OrderQty
 FROM  Sales.SalesOrderDetail AS SOD
 RIGHT OUTER JOIN  Production.Product AS P
 	ON P.ProductID = SOD.ProductID;
+
+4.  USE AdventureWorks2016CTP3;
+	GO
+
+--First step, join Customer to SalesOrderHeader
+--Let's order by SalesOrderID to see the NULLs
+SELECT C.CustomerID, C.AccountNumber, 
+	SOH.SalesOrderID, SOH.OrderDate
+FROM Sales.Customer AS C 
+LEFT JOIN Sales.SalesOrderHeader AS SOH 
+	ON C.CustomerID = SOH.CustomerID
+ORDER BY SalesOrderID;
+
+--Now if we just join to OrderDetails, the NULLs disappear
+SELECT C.CustomerID, C.AccountNumber, 
+	SOH.SalesOrderID, SOH.OrderDate, 
+	SOD.SalesOrderDetailID, SOD.ProductID
+FROM Sales.Customer AS C 
+LEFT JOIN Sales.SalesOrderHeader AS SOH 
+	ON C.CustomerID = SOH.CustomerID
+INNER JOIN Sales.SalesOrderDetail AS SOD 
+	ON SOH.SalesOrderID = SOD.SalesOrderID
+ORDER BY SalesOrderID;
+
+--To keep the NULL rows in the results
+--continue with LEFT JOIN
+SELECT C.CustomerID, C.AccountNumber, 
+	SOH.SalesOrderID, SOH.OrderDate, 
+	SOD.SalesOrderDetailID, SOD.ProductID
+FROM Sales.Customer AS C 
+LEFT JOIN Sales.SalesOrderHeader AS SOH 
+	ON C.CustomerID = SOH.CustomerID
+LEFT JOIN Sales.SalesOrderDetail AS SOD 
+	ON SOH.SalesOrderID = SOD.SalesOrderID
+ORDER BY SalesOrderID;
+
+--Don't start with RIGHT, because will have to switch to LEFT
+SELECT C.CustomerID, C.AccountNumber, 
+	SOH.SalesOrderID, SOH.OrderDate, 
+	SOD.SalesOrderDetailID, SOD.ProductID
+FROM Sales.SalesOrderHeader AS SOH 
+RIGHT JOIN Sales.Customer AS C 
+	ON C.CustomerID = SOH.CustomerID
+LEFT JOIN Sales.SalesOrderDetail AS SOD 
+	ON SOH.SalesOrderID = SOD.SalesOrderID
+ORDER BY SalesOrderID;
