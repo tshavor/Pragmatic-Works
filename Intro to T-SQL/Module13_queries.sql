@@ -31,8 +31,8 @@ VALUES (1,'John','Smith');
 SELECT * FROM #Names;
 
 --You can also enter multiple rows at once
-INSERT INTO #Names(BusinessEntityID, 
-	FirstName, LastName)
+INSERT INTO #Names(BusinessEntityID, FirstName, LastName)
+--Here, we are hard coding the values for the created variables.  2=BusinessEntityId, "John"= FirstName, "Smith"= LastName
 VALUES (2,'John','Smith'),
 		(3,'Mary','Smith'),
 		(4,'Brian','Knight');
@@ -41,8 +41,7 @@ VALUES (2,'John','Smith'),
 SELECT * FROM #Names;
 
 --Insert with a SELECT statement
-INSERT INTO #Names(BusinessEntityID, 
-	FirstName, LastName)
+INSERT INTO #Names(BusinessEntityID, FirstName, LastName)
 SELECT BusinessEntityID, FirstName, LastName
 FROM Person.Person;
 
